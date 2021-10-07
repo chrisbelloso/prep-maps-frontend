@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import apiAuth from "../apiAuth";
 const apiUrl = process.env.REACT_APP_API_URL;
 
 export const getUsersFromApi = async () => {
@@ -10,7 +10,7 @@ export const getUsersFromApi = async () => {
 export const getSingleUserFromApi = async (id) => {
   const response = await axios.get(`${apiUrl}/auth/user/${id}`);
   return response;
-}
+};
 
 export const signupUser = async (user) => {
   const response = await axios.post(`${apiUrl}/auth/signup/`, user);
@@ -18,9 +18,8 @@ export const signupUser = async (user) => {
 };
 
 export const loginUserToApi = async (user) => {
-  const response = await axios.post(`${apiUrl}/auth/login`, user);
+  const response = await apiAuth.post(`${apiUrl}/auth/login`, user);
   try {
-    console.log(response.data);
     if (response.data.user) {
       localStorage.setItem("jwtprepmap", JSON.stringify(response.data));
     }
@@ -31,12 +30,19 @@ export const loginUserToApi = async (user) => {
 };
 
 export const updateUserToApi = async (id, user) => {
-  const response = await axios.put(`${apiUrl}/auth/user/${id}`, user);
+  const response = await apiAuth.put(`${apiUrl}/auth/user/${id}`, user);
+  try {
+    if (response.data.user) {
+      localStorage.setItem("jwtprepmap", JSON.stringify(response.data));
+    }
+  } catch (error) {
+    console.log(error);
+  }
   return response;
 };
 
 export const deleteUserFromApi = async (id) => {
-  const response = await axios.delete(`${apiUrl}/auth/user/${id}`);
+  const response = await apiAuth.delete(`${apiUrl}/auth/user/${id}`);
   return response;
 };
 

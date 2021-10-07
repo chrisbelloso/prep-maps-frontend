@@ -195,7 +195,7 @@ const SignupView = () => {
               onChange={handleChange}
             />
             <Form.Text className="text-muted">
-              Enter password that is at least 8 characters long
+            Enter a password with at least 8 characters, capital letters & symbols
             </Form.Text>
           </Form.Group>
 
@@ -251,7 +251,7 @@ const SignupView = () => {
             onChange={handleChange}
           />
           <Form.Text className="text-muted">
-            Read <a href="">here</a> to learn more about PrEP
+            Read <a href="https://www.plannedparenthood.org/learn/stds-hiv-safer-sex/hiv-aids/prep" target="_blank">here</a> to learn more about PrEP
           </Form.Text>
           <br />
           <br />
@@ -264,7 +264,7 @@ const SignupView = () => {
             onChange={handleChange}
           />
           <Form.Text className="text-muted">
-            Read <a href="">here</a> to learn more about PEP
+            Read <a href="https://www.plannedparenthood.org/learn/stds-hiv-safer-sex/hiv-aids/pep" target="_blank">here</a> to learn more about PEP
           </Form.Text>
           <br />
           <br />

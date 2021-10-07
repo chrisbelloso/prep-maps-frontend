@@ -14,27 +14,30 @@ import "@reach/combobox/styles.css";
 
 import { useEffect, useState } from "react";
 import {
+  deleteUserFromApi,
   getSingleUserFromApi,
+  logOut,
   updateUserToApi,
 } from "../services/UserServices";
 
 import { Form, Button } from "react-bootstrap";
 
 import { useLoadScript } from "@react-google-maps/api";
+import { useHistory } from "react-router";
 
 const libraries = ["places"];
 
 const ProfileView = ({ match }) => {
-  const { id } = match.params;
 
+  const history = useHistory()
+
+  const { id } = match.params;
   const [previousPrEP, setPreviousPrEP] = useState();
   const [previousPEP, setPreviousPEP] = useState();
   const [previousInsurance, setPreviousInsurance] = useState();
   const [previousTesting, setPreviousTesting] = useState();
-
   const [previousAddress, setPreviousAddress] = useState("");
   const [currentAddress, setCurrentAddress] = useState("");
-
   const [editUser, setEditUser] = useState({
     email: "",
     password: "",
@@ -101,6 +104,13 @@ const ProfileView = ({ match }) => {
     const userResponse = await updateUserToApi(id, editUser);
     window.location.reload();
   };
+
+  const handleDelete = async (event) => {
+    await deleteUserFromApi(id)
+    await logOut()
+    history.push("/")
+    window.location.reload();
+  }
 
   const Search = () => {
     const {
@@ -227,7 +237,7 @@ const ProfileView = ({ match }) => {
               onClick={handleChange}
             />
             <Form.Text className="text-muted">
-              Read <a href="">here</a> to learn more about PEP
+              Read <a href="https://www.plannedparenthood.org/learn/stds-hiv-safer-sex/hiv-aids/prep" target="_blank">here</a> to learn more about PrEP
             </Form.Text>
           </div>
 
@@ -241,7 +251,7 @@ const ProfileView = ({ match }) => {
               onClick={handleChange}
             />
             <Form.Text className="text-muted">
-              Read <a href="">here</a> to learn more about PEP
+              Read <a href="https://www.plannedparenthood.org/learn/stds-hiv-safer-sex/hiv-aids/pep" target="_blank">here</a> to learn more about PEP
             </Form.Text>
           </div>
 
@@ -271,6 +281,16 @@ const ProfileView = ({ match }) => {
             onClick={handleUpdate}
           >
             Update
+          </Button>
+
+
+          <Button
+            variant="outline-danger"
+            type="button"
+            style={{ width: "100%" , marginTop: "10px"}}
+            onClick={handleDelete}
+          >
+            Delete Account
           </Button>
         </div>
       </Form>

@@ -41,7 +41,7 @@ const Map = () => {
     styles: mapStyles,
     disableDefaultUI: true,
     zoomControl: true,
-    minZoom: 12,
+    minZoom: 13,
     maxZoom: 17,
   };
   const mapContainerStyle = {
@@ -61,7 +61,7 @@ const Map = () => {
     <Animated>
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
-        zoom={12}
+        zoom={13}
         center={center}
         options={options}
         onLoad={onMapLoad}

@@ -24,7 +24,6 @@ const NavBar = () => {
   const getCurrentLoginName = async () => {
     if(!localStorage.getItem('jwtprepmap'))return;
     const response = await getSingleUserFromApi(JSON.parse(localStorage.getItem('jwtprepmap')).user.uid)
-    console.log(response.data.name)
     setCurrentUser(response.data.name)
   }
 
