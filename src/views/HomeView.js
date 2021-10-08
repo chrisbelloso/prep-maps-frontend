@@ -13,16 +13,15 @@ const HomeView = () => {
             <h3>About PrEP Maps</h3>
 
             <p>
-              PrEP Maps is an interactive Google map for finding providers in
-              Miami, Florida (Miami-Dade County) that can assist in HIV
-              preventative healthcare. Using the Google Maps API, you can click
-              on nearby blue pill markers and see what kind of servives each
-              provider offers such as PrEP, PEP, or HIV testing and to see
-              wether they require insurance. If you are provider that wants to
-              include their practice in this map, youa re welcome to register
-              and sign up above. This website was made to combine all the
-              already existing resources for HIV prevention in Miami into an
-              acccecible location for everyone to use.
+              PrEP Maps is an interactive map for finding providers in Miami,
+              Florida (Miami-Dade County) that can assist in HIV preventative
+              healthcare. You can click on blue pill markers to see what
+              kind of services each provider offers such as PrEP, PEP, or HIV
+              testing and to see wether they require insurance. If you are a 
+              provider that wants to include their practice in this map, you
+              can register and sign up. This website was made to
+              combine all the already existing resources for HIV prevention in
+              Miami into an acccessible location for everyone to use.
             </p>
           </Tab>
           <Tab eventKey="PrEP" title="PrEP">
@@ -37,7 +36,7 @@ const HomeView = () => {
               PrEP should visit their provider every 3 months for follow-up
               checks and prescription refills. If you believe you are at risk
               for HIV, consider talking with a health care provider for PrEP as
-              an option of prevention.
+              an option for prevention.
             </p>
           </Tab>
           <Tab eventKey="PEP" title="PEP">
@@ -59,13 +58,13 @@ const HomeView = () => {
             <h3>What are HIV tests?</h3>
 
             <p>
-              The only way to know for sure if you have HIV is getting tested.
+              The only way to know for sure if you have HIV is to get tested.
               Today, there are a variety of testing methods including rapid HIV
               testing where you can recieve results in under a minute. Knowing
               your status is one of the best ways you can protect yourself and
               others. If you are HIV positive, knowing your status also helps
               you find the right care that can help you live a healthy life and
-              become undetectable, which is when the viral count of HIV in you
+              become undetectable, which is when the viral count of HIV in your
               body is so low that it can no longer be transmitted to others.
             </p>
           </Tab>

@@ -17,13 +17,20 @@ input{
     border: solid 1px #ced4da;
     border-radius: 4px;
     height: 40px;
-}
+  }
 
 .search input{
     width:100%;
     text-indent: 10px;
 }
 
+.search-disabled input{
+    width:100%;
+    text-indent: 10px;
+    border: solid 1px #dc3645;
+}
+
 .search-field{
     text-indent: 10px;
 }
+

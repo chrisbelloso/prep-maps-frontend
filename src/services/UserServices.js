@@ -13,8 +13,13 @@ export const getSingleUserFromApi = async (id) => {
 };
 
 export const signupUser = async (user) => {
-  const response = await axios.post(`${apiUrl}/auth/signup/`, user);
-  return response;
+  try {
+    const response = await axios.post(`${apiUrl}/auth/signup/`, user);
+
+    return response;
+  } catch (error) {
+    return error.response;
+  }
 };
 
 export const loginUserToApi = async (user) => {
@@ -24,7 +29,7 @@ export const loginUserToApi = async (user) => {
       localStorage.setItem("jwtprepmap", JSON.stringify(response.data));
     }
   } catch (error) {
-    console.log(error);
+    console.log(error.response);
   }
   return response;
 };

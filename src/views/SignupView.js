@@ -26,13 +26,21 @@ import { useLoadScript } from "@react-google-maps/api";
 
 import { Animated } from "react-animated-css";
 import { useEffect, useState } from "react";
-import { signupUser } from "../services/UserServices";
+import { loginUserToApi, signupUser } from "../services/UserServices";
 import { useHistory } from "react-router";
 
 const libraries = ["places"];
 
 const SignupView = () => {
   const history = useHistory();
+
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+  const [nameError, setNameError] = useState(false);
+  const [addressError, setAddressError] = useState("search");
+  const [phoneError, setPhoneError] = useState(false);
+  const [websiteError, setWebsiteError] = useState(false);
+
   const [currentAddress, setCurrentAddress] = useState("");
   const [newUsuer, setNewUser] = useState({
     email: "",
@@ -50,9 +58,6 @@ const SignupView = () => {
   });
 
   const handleChange = (event) => {
-
-    console.log(event.target.checked)
-
     if (
       event.target.checked === true &&
       (event.target.name === "PrEP" ||
@@ -65,7 +70,7 @@ const SignupView = () => {
         [event.target.name]: true,
       });
     } else if (
-      event.target.checked === false  &&
+      event.target.checked === false &&
       (event.target.name === "PrEP" ||
         event.target.name === "PEP" ||
         event.target.name === "insurance" ||
@@ -86,21 +91,47 @@ const SignupView = () => {
   const handleSignup = async (event) => {
     event.preventDefault();
     const userResponse = await signupUser(newUsuer);
-    setNewUser({
-      email: "",
-      password: "",
-      name: "",
-      address: "",
-      phone: "",
-      website: "",
-      PrEP: false,
-      PEP: false,
-      insurance: false,
-      testing: false,
-      longitude: 0,
-      latitude: 0,
-    });
+
+    console.log(userResponse);
+
+    if (userResponse.data.errors) {
+      setEmailError(false);
+      setPasswordError(false);
+      setNameError(false);
+      setAddressError("search");
+      setPhoneError(false);
+      setWebsiteError(false);
+
+      userResponse.data.errors.map((err) => {
+        switch (err.param) {
+          case "email":
+            setEmailError(true);
+            break;
+          case "password":
+            setPasswordError(true);
+            break;
+          case "name":
+            setNameError(true);
+            break;
+          case "address":
+            setAddressError("search-disabled");
+            break;
+          case "phone":
+            setPhoneError(true);
+            break;
+          case "website":
+            setWebsiteError(true);
+            break;
+        }
+      });
+
+      return;
+    }
+
+    await loginUserToApi({email: newUsuer.email, password: newUsuer.password})
     history.push("/");
+    window.location.reload();
+
   };
 
   const Search = () => {
@@ -125,7 +156,7 @@ const SignupView = () => {
     }, []);
 
     return (
-      <div className="search">
+      <div className={addressError}>
         <Combobox
           onSelect={async (address) => {
             setCurrentAddress(address);
@@ -140,8 +171,6 @@ const SignupView = () => {
                 latitude: lat,
                 longitude: lng,
               });
-
-              console.log(results);
             } catch (error) {
               console.log("error");
             }
@@ -182,62 +211,98 @@ const SignupView = () => {
     <Animated>
       <div className="signup-form">
         <Form>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Group className="mb-3">
             <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" name="email" onChange={handleChange} />
+            <InputGroup hasValidation>
+              <Form.Control
+                type="email"
+                name="email"
+                onChange={handleChange}
+                isInvalid={emailError}
+                required
+              />
+              <Form.Control.Feedback type="invalid">
+                Please enter a valid email
+              </Form.Control.Feedback>
+            </InputGroup>
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Group className="mb-3">
             <Form.Label>Create password</Form.Label>
-            <Form.Control
-              type="password"
-              name="password"
-              onChange={handleChange}
-            />
-            <Form.Text className="text-muted">
-            Enter a password with at least 8 characters, capital letters & symbols
-            </Form.Text>
+            <InputGroup hasValidation>
+              <Form.Control
+                type="password"
+                name="password"
+                onChange={handleChange}
+                isInvalid={passwordError}
+                required
+              />
+              <Form.Text className="text-muted">
+                Passwords should be at least 8 characters long and include
+                capital & lowercase letters, numbers, and symbols
+              </Form.Text>
+              <Form.Control.Feedback type="invalid">
+                Please enter a valid password
+              </Form.Control.Feedback>
+            </InputGroup>
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Name of practice</Form.Label>
-            <Form.Control name="name" onChange={handleChange} />
+            <InputGroup hasValidation>
+              <Form.Control
+                name="name"
+                onChange={handleChange}
+                isInvalid={nameError}
+                required
+              />
+              <Form.Control.Feedback type="invalid">
+                Please include a name
+              </Form.Control.Feedback>
+            </InputGroup>
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Address</Form.Label>
             <Search />
-            {/* <Form.Control name="address" onChange={handleChange} /> */}
 
-            {/* <InputGroup
-            className="mb-3"
-            style={{ marginTop: "9px", width: "70%" }}
-          >
-            <FormControl
-              style={{ height: "30px" }}
-              placeholder="Latitude"
-              type="number"
-              name="latitude"
-              onChange={handleChange}
-            />
-            <FormControl
-              style={{ height: "30px" }}
-              placeholder="Longitude"
-              type="number"
-              name="longitude"
-              onChange={handleChange}
-            />
-          </InputGroup> */}
+            <div style={{color:"#dc3645", fontSize:"14px", marginTop:"3px"}}>
+              {addressError === "search-disabled" ? ("Please enter a valid address") : ("")}
+            </div>
+
+
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Phone number</Form.Label>
-            <Form.Control name="phone" onChange={handleChange} />
+            <InputGroup hasValidation>
+              <Form.Control
+                name="phone"
+                onChange={handleChange}
+                isInvalid={phoneError}
+                required
+              />
+              <Form.Control.Feedback type="invalid">
+                Please enter a phone number using either of these formats:{" "}
+                <br />
+                (000) 000-0000, (000)000-000, 000-000-000
+              </Form.Control.Feedback>
+            </InputGroup>
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Website</Form.Label>
-            <Form.Control name="website" onChange={handleChange} />
+            <InputGroup hasValidation>
+              <Form.Control
+                name="website"
+                onChange={handleChange}
+                isInvalid={websiteError}
+                required
+              />
+              <Form.Control.Feedback type="invalid">
+                Please enter a valid website URL
+              </Form.Control.Feedback>
+            </InputGroup>
           </Form.Group>
 
           <br />
@@ -251,7 +316,14 @@ const SignupView = () => {
             onChange={handleChange}
           />
           <Form.Text className="text-muted">
-            Read <a href="https://www.plannedparenthood.org/learn/stds-hiv-safer-sex/hiv-aids/prep" target="_blank">here</a> to learn more about PrEP
+            Read{" "}
+            <a
+              href="https://www.plannedparenthood.org/learn/stds-hiv-safer-sex/hiv-aids/prep"
+              target="_blank"
+            >
+              here
+            </a>{" "}
+            to learn more about PrEP
           </Form.Text>
           <br />
           <br />
@@ -264,7 +336,14 @@ const SignupView = () => {
             onChange={handleChange}
           />
           <Form.Text className="text-muted">
-            Read <a href="https://www.plannedparenthood.org/learn/stds-hiv-safer-sex/hiv-aids/pep" target="_blank">here</a> to learn more about PEP
+            Read{" "}
+            <a
+              href="https://www.plannedparenthood.org/learn/stds-hiv-safer-sex/hiv-aids/pep"
+              target="_blank"
+            >
+              here
+            </a>{" "}
+            to learn more about PEP
           </Form.Text>
           <br />
           <br />

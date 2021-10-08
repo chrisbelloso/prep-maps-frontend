@@ -20,7 +20,7 @@ import {
   updateUserToApi,
 } from "../services/UserServices";
 
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Modal } from "react-bootstrap";
 
 import { useLoadScript } from "@react-google-maps/api";
 import { useHistory } from "react-router";
@@ -28,8 +28,7 @@ import { useHistory } from "react-router";
 const libraries = ["places"];
 
 const ProfileView = ({ match }) => {
-
-  const history = useHistory()
+  const history = useHistory();
 
   const { id } = match.params;
   const [previousPrEP, setPreviousPrEP] = useState();
@@ -52,6 +51,11 @@ const ProfileView = ({ match }) => {
     longitude: 0,
     latitude: 0,
   });
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   useEffect(() => {
     getUser();
@@ -106,11 +110,11 @@ const ProfileView = ({ match }) => {
   };
 
   const handleDelete = async (event) => {
-    await deleteUserFromApi(id)
-    await logOut()
-    history.push("/")
+    await deleteUserFromApi(id);
+    await logOut();
+    history.push("/");
     window.location.reload();
-  }
+  };
 
   const Search = () => {
     const {
@@ -191,38 +195,38 @@ const ProfileView = ({ match }) => {
       <Form>
         <Form.Group className="mb-3">
           <Form.Label>Name of practice</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder={editUser.name}
-              name="name"
-              onChange={handleChange}
-            />
+          <Form.Control
+            type="text"
+            placeholder={editUser.name}
+            name="name"
+            onChange={handleChange}
+          />
         </Form.Group>
 
         <Form.Group className="mb-3">
           <Form.Label>Phone</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder={editUser.phone}
-              name="phone"
-              onChange={handleChange}
-            />
+          <Form.Control
+            type="text"
+            placeholder={editUser.phone}
+            name="phone"
+            onChange={handleChange}
+          />
         </Form.Group>
 
         <Form.Group className="mb-3">
           <Form.Label>Website</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder={editUser.website}
-              name="website"
-              onChange={handleChange}
-            />
+          <Form.Control
+            type="text"
+            placeholder={editUser.website}
+            name="website"
+            onChange={handleChange}
+          />
         </Form.Group>
 
         <Form.Group className="mb-3">
-            <Form.Label>Address</Form.Label>
-            <Search />
-          </Form.Group>
+          <Form.Label>Address</Form.Label>
+          <Search />
+        </Form.Group>
 
         <br />
 
@@ -237,7 +241,14 @@ const ProfileView = ({ match }) => {
               onClick={handleChange}
             />
             <Form.Text className="text-muted">
-              Read <a href="https://www.plannedparenthood.org/learn/stds-hiv-safer-sex/hiv-aids/prep" target="_blank">here</a> to learn more about PrEP
+              Read{" "}
+              <a
+                href="https://www.plannedparenthood.org/learn/stds-hiv-safer-sex/hiv-aids/prep"
+                target="_blank"
+              >
+                here
+              </a>{" "}
+              to learn more about PrEP
             </Form.Text>
           </div>
 
@@ -251,7 +262,14 @@ const ProfileView = ({ match }) => {
               onClick={handleChange}
             />
             <Form.Text className="text-muted">
-              Read <a href="https://www.plannedparenthood.org/learn/stds-hiv-safer-sex/hiv-aids/pep" target="_blank">here</a> to learn more about PEP
+              Read{" "}
+              <a
+                href="https://www.plannedparenthood.org/learn/stds-hiv-safer-sex/hiv-aids/pep"
+                target="_blank"
+              >
+                here
+              </a>{" "}
+              to learn more about PEP
             </Form.Text>
           </div>
 
@@ -283,17 +301,29 @@ const ProfileView = ({ match }) => {
             Update
           </Button>
 
-
           <Button
             variant="outline-danger"
             type="button"
-            style={{ width: "100%" , marginTop: "10px"}}
-            onClick={handleDelete}
+            style={{ width: "100%", marginTop: "10px" }}
+            onClick={handleShow}
           >
             Delete Account
           </Button>
         </div>
       </Form>
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Warning</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Are you sure you want to delete your profile?</Modal.Body>
+        <Modal.Footer>
+
+          <Button variant="danger" onClick={handleDelete} style={{ width: "100%"}}>
+            Delete
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };
