@@ -128,10 +128,12 @@ const SignupView = () => {
       return;
     }
 
-    await loginUserToApi({email: newUsuer.email, password: newUsuer.password})
+    await loginUserToApi({
+      email: newUsuer.email,
+      password: newUsuer.password,
+    });
     history.push("/");
     window.location.reload();
-
   };
 
   const Search = () => {
@@ -266,11 +268,13 @@ const SignupView = () => {
             <Form.Label>Address</Form.Label>
             <Search />
 
-            <div style={{color:"#dc3645", fontSize:"14px", marginTop:"3px"}}>
-              {addressError === "search-disabled" ? ("Please enter a valid address") : ("")}
+            <div
+              style={{ color: "#dc3645", fontSize: "14px", marginTop: "3px" }}
+            >
+              {addressError === "search-disabled"
+                ? "Please enter a valid address"
+                : ""}
             </div>
-
-
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -282,10 +286,12 @@ const SignupView = () => {
                 isInvalid={phoneError}
                 required
               />
+              <Form.Text className="text-muted">
+                Phone numbers must be in the following format: (000) 000-0000,
+                (000)000-000, 000-000-000
+              </Form.Text>
               <Form.Control.Feedback type="invalid">
-                Please enter a phone number using either of these formats:{" "}
-                <br />
-                (000) 000-0000, (000)000-000, 000-000-000
+                Please enter a valid phone number
               </Form.Control.Feedback>
             </InputGroup>
           </Form.Group>
