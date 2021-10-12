@@ -1,70 +1,95 @@
-# Getting Started with Create React App
+**Made for Ironhack Full-Stack Development Bootcamp**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h2> <img src="https://github.com/thomaskno/prep-maps-frontend/blob/main/public/logo.png" width="366" /> </h2>
 
-## Available Scripts
+<img src="https://img.shields.io/badge/MongoDB-white?style=for-the-badge&logo=mongodb&logoColor=4EA94B" /> <img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white" /> <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" /> <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" /> <img src="https://img.shields.io/badge/Google_Cloud-4285F4?style=for-the-badge&logo=google-cloud&logoColor=white" /> <img src="https://img.shields.io/badge/netlify-%23000000.svg?style=for-the-badge&logo=netlify&logoColor=#00C7B7" />
 
-In the project directory, you can run:
+**_The database for this project is no longer in use, function may be limited._**
 
-### `npm start`
+**_This is the React section of the app. Check out the Node section <a href="https://github.com/thomaskno/prep-maps-backend" target="_blank">here</a>._**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## HIV Care in Miami, Flroida
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+PrEP Maps is an interactive map for finding providers in Miami, Florida (Miami-Dade County) that can assist in HIV preventative healthcare. This website was made to combine all the already existing resources for HIV prevention in Miami into an accessible location for everyone to use.
 
-### `npm test`
+## How to use
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+You can click on blue pill markers to see what kind of services each provider offers such as PrEP, PEP, or HIV testing and to see whether they require insurance. If you are a provider that wants to include their practice in this map, you can register and sign up.
 
-### `npm run build`
+## Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Open command line or terminal and clone both this repo and <a href="https://github.com/thomaskno/prep-maps-backend" target="_blank">the backend repo</a> into your desired directory.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```lang-zsh
+$ git clone https://github.com/thomaskno/prep-maps-frontend
+$ git clone https://github.com/thomaskno/prep-maps-backend
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- The project also has connections to a MongoDB database, Google API key, and to a specified backend port. It would be helpful to create a .env file, for both repos, and include all nessesary URLs and ports in them.
 
-### `npm run eject`
+```
+// .env inside the frontend repo
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+REACT_APP_API_URL=[Enter URL where the database API is hosted here]
+REACT_APP_GOOGLE_KEY=[Enter your Google Maps API key]
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+// .env inside the backend repo
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+DATABASE_URL=[Enter your MongoDB database URL here]
+SECRET_KEY=[Enter a secret string of characters here]
+PORT=[Enter port number here]
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Download all the dependencies listed below in their respective repos through npm.
 
-## Learn More
+- Navigate to the backend repo and run nodemon on the app file.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```lang-zsh
+$ nodemon app.js
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Navigate to the frontend repo and run npm start.
 
-### Code Splitting
+```lang-zsh
+$ npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Enjoy!
 
-### Analyzing the Bundle Size
+## Screenshots
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+<img src="https://github.com/thomaskno/prep-maps-frontend/blob/main/public/demo-1.png" /> 
+<img src="https://github.com/thomaskno/prep-maps-frontend/blob/main/public/demo-2.png" /> 
+<img src="https://github.com/thomaskno/prep-maps-frontend/blob/main/public/demo-3.png" />
 
-### Making a Progressive Web App
+## Dependencies used
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+#### React section (i.e. frontend repo)
 
-### Advanced Configuration
+- <a href="https://reactjs.org/" target="_blank">React</a>
+- <a href="https://www.npmjs.com/package/axios" target="_blank">axios</a>
+- <a href="https://www.npmjs.com/package/react-google-maps" target="_blank">@react-google-maps/api</a>
+- <a href="https://www.npmjs.com/package/@reach/combobox" target="_blank">@reach/combobox</a>
+- <a href="https://react-bootstrap.github.io/" target="_blank">react-bootstrap</a>
+- <a href="https://www.npmjs.com/package/react-bootstrap-icons" target="_blank">react-bootstrap-icons</a>
+- <a href="https://www.npmjs.com/package/react-router" target="_blank">react-router</a>
+- <a href="https://www.npmjs.com/package/react-router-dom" target="_blank">react-router-dom</a>
+- <a href="https://www.npmjs.com/package/use-places-autocomplete" target="_blank">use-places-autocomplete</a>
+- <a href="https://www.npmjs.com/package/date-fns" target="_blank">date-fns</a>
+- <a href="https://www.npmjs.com/package/animate.css/v/3.7.0" target="_blank">animate.css</a>
+- <a href="https://www.npmjs.com/package/react-animated-css" target="_blank">react-animated-css</a>
+- <a href="https://sass-lang.com/" target="_blank">sass</a>
+- <a href="https://www.npmjs.com/package/scss" target="_blank">scss</a>
+- <a href="https://www.npmjs.com/package/dotenv" target="_blank">dotenv</a>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+#### Node section (i.e. backend repo)
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- <a href="https://www.npmjs.com/package/express" target="_blank">express</a>
+- <a href="https://www.npmjs.com/package/cors" target="_blank">cors</a>
+- <a href="https://www.npmjs.com/package/mongoose" target="_blank">mongoose</a>
+- <a href="https://www.npmjs.com/package/bcryptjs" target="_blank">bcryptjs</a>
+- <a href="https://www.npmjs.com/package/express-validator" target="_blank">express-validator</a>
+- <a href="https://www.npmjs.com/package/jsonwebtoken" target="_blank">jsonwebtoken</a>
+- <a href="https://www.npmjs.com/package/dotenv" target="_blank">dotenv</a>

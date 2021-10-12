@@ -15,13 +15,13 @@ const HomeView = () => {
             <p>
               PrEP Maps is an interactive map for finding providers in Miami,
               Florida (Miami-Dade County) that can assist in HIV preventative
-              healthcare. You can click on blue pill markers to see what
-              kind of services each provider offers such as PrEP, PEP, or HIV
-              testing and to see whether they require insurance. If you are a 
-              provider that wants to include their practice in this map, you
-              can register and sign up. This website was made to
-              combine all the already existing resources for HIV prevention in
-              Miami into an accessible location for everyone to use.
+              healthcare. You can click on blue pill markers to see what kind of
+              services each provider offers such as PrEP, PEP, or HIV testing
+              and to see whether they require insurance. If you are a provider
+              that wants to include their practice in this map, you can register
+              and sign up. This website was made to combine all the already
+              existing resources for HIV prevention in Miami into an accessible
+              location for everyone to use.
             </p>
           </Tab>
           <Tab eventKey="PrEP" title="PrEP">

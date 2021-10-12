@@ -318,8 +318,11 @@ const ProfileView = ({ match }) => {
         </Modal.Header>
         <Modal.Body>Are you sure you want to delete your profile?</Modal.Body>
         <Modal.Footer>
-
-          <Button variant="danger" onClick={handleDelete} style={{ width: "100%"}}>
+          <Button
+            variant="danger"
+            onClick={handleDelete}
+            style={{ width: "100%" }}
+          >
             Delete
           </Button>
         </Modal.Footer>
