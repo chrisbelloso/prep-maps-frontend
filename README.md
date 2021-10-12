@@ -30,16 +30,16 @@ $ git clone https://github.com/thomaskno/prep-maps-backend
 ```
 // .env inside the frontend repo
 
-REACT_APP_API_URL=[Enter URL where the database API is hosted here]
-REACT_APP_GOOGLE_KEY=[Enter your Google API key here]
+REACT_APP_API_URL="Enter URL where the database API is hosted here"
+REACT_APP_GOOGLE_KEY="Enter your Google API key here"
 ```
 
 ```
 // .env inside the backend repo
 
-DATABASE_URL=[Enter your MongoDB database URL here]
-SECRET_KEY=[Enter a secret string of characters here]
-PORT=[Enter port number here]
+DATABASE_URL="Enter your MongoDB database URL here"
+SECRET_KEY="Enter a secret string of characters here"
+PORT="Enter port number here"
 ```
 
 - Download all the dependencies listed below in their respective repos through npm.
