@@ -31,7 +31,7 @@ $ git clone https://github.com/thomaskno/prep-maps-backend
 // .env inside the frontend repo
 
 REACT_APP_API_URL=[Enter URL where the database API is hosted here]
-REACT_APP_GOOGLE_KEY=[Enter your Google API key]
+REACT_APP_GOOGLE_KEY=[Enter your Google API key here]
 ```
 
 ```
