@@ -23,7 +23,7 @@ $ git clone https://github.com/synhaptic/prep-maps-frontend
 $ git clone https://github.com/synhaptic/prep-maps-backend
 ```
 
-- The project also has connections to a MongoDB database, Google API key, and to a specified backend port. It would be helpful to create a .env file, for both repos, and include all nessesary URLs and ports in them.
+- The project also has connections to a MongoDB database, Google API key, and to a specified backend port. It would be helpful to create a .env file, for both repos, and include all URLs and ports in them.
 
 ```
 // .env inside the frontend repo
