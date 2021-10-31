@@ -2,8 +2,6 @@
 
 <h2> <img src="https://github.com/synhaptic/prep-maps-frontend/blob/main/public/logo.png" width="366" /> </h2>
 
-<img src="https://img.shields.io/badge/MongoDB-white?style=for-the-badge&logo=mongodb&logoColor=4EA94B" /> <img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white" /> <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" /> <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" /> <img src="https://img.shields.io/badge/Google_Cloud-4285F4?style=for-the-badge&logo=google-cloud&logoColor=white" /> <img src="https://img.shields.io/badge/netlify-%23000000.svg?style=for-the-badge&logo=netlify&logoColor=#00C7B7" />
-
 **_The database for this project is no longer in use, function may be limited._**
 
 **_This is the React section of the app. Check out the Node section <a href="https://github.com/synhaptic/prep-maps-backend" target="_blank">here</a>._**
