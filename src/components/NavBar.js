@@ -120,7 +120,7 @@ const NavBar = () => {
           </Nav>
           <Nav>
             <Navbar.Text style={{fontSize: "12px", marginTop: "11px"}}>
-              Created by: <a href="https://github.com/thomaskno" target="_blank">Thomas Knoepffler</a>
+              Created by: <a href="https://github.com/synhaptic" target="_blank">Thomas Knoepffler</a>
             </Navbar.Text>
           </Nav>
         </Navbar.Collapse>
