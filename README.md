@@ -1,12 +1,12 @@
 **Made for Ironhack Full-Stack Development Bootcamp**
 
-<h2> <img src="https://github.com/thomaskno/prep-maps-frontend/blob/main/public/logo.png" width="366" /> </h2>
+<h2> <img src="https://github.com/synhaptic/prep-maps-frontend/blob/main/public/logo.png" width="366" /> </h2>
 
 <img src="https://img.shields.io/badge/MongoDB-white?style=for-the-badge&logo=mongodb&logoColor=4EA94B" /> <img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white" /> <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" /> <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" /> <img src="https://img.shields.io/badge/Google_Cloud-4285F4?style=for-the-badge&logo=google-cloud&logoColor=white" /> <img src="https://img.shields.io/badge/netlify-%23000000.svg?style=for-the-badge&logo=netlify&logoColor=#00C7B7" />
 
 **_The database for this project is no longer in use, function may be limited._**
 
-**_This is the React section of the app. Check out the Node section <a href="https://github.com/thomaskno/prep-maps-backend" target="_blank">here</a>._**
+**_This is the React section of the app. Check out the Node section <a href="https://github.com/synhaptic/prep-maps-backend" target="_blank">here</a>._**
 
 ## HIV healthcare in Miami
 
@@ -21,8 +21,8 @@ You can click on blue pill markers to see what kind of services each provider of
 - Open command line or terminal and clone both this repo and <a href="https://github.com/thomaskno/prep-maps-backend" target="_blank">the backend repo</a> into your desired directory.
 
 ```lang-zsh
-$ git clone https://github.com/thomaskno/prep-maps-frontend
-$ git clone https://github.com/thomaskno/prep-maps-backend
+$ git clone https://github.com/synhaptic/prep-maps-frontend
+$ git clone https://github.com/synhaptic/prep-maps-backend
 ```
 
 - The project also has connections to a MongoDB database, Google API key, and to a specified backend port. It would be helpful to create a .env file, for both repos, and include all nessesary URLs and ports in them.
@@ -60,9 +60,9 @@ $ npm start
 
 ## Screenshots
 
-<img src="https://github.com/thomaskno/prep-maps-frontend/blob/main/public/demo-1.png" /> 
-<img src="https://github.com/thomaskno/prep-maps-frontend/blob/main/public/demo-2.png" /> 
-<img src="https://github.com/thomaskno/prep-maps-frontend/blob/main/public/demo-3.png" />
+<img src="https://github.com/synhaptic/prep-maps-frontend/blob/main/public/demo-1.png" /> 
+<img src="https://github.com/synhaptic/prep-maps-frontend/blob/main/public/demo-2.png" /> 
+<img src="https://github.com/synhaptic/prep-maps-frontend/blob/main/public/demo-3.png" />
 
 ## Dependencies used
 
